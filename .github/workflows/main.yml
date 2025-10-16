@@ -1,0 +1,61 @@
+# Nombre del workflow
+name: Deploy Vite Project to GitHub Pages
+
+on:
+  # Se ejecuta cuando haces push a la rama 'main'
+  push:
+    branches: ["main"]
+
+  # Te permite ejecutarlo manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+# Permisos necesarios para que la Action pueda publicar en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite solo un despliegue concurrente
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Tarea de construcción (build)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Puedes cambiarla si usas otra versión
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        # El comando 'npm run build' ejecuta 'vite build'
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Sube el contenido de la carpeta 'dist' que genera Vite
+          path: './dist'
+
+  # Tarea de despliegue (deploy)
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    # La tarea de despliegue necesita que la de construcción haya terminado
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
