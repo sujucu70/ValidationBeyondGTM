@@ -269,17 +269,94 @@ const hypotheses = [
 ];
 
 const colorClasses = {
-  blue: { bg: 'bg-blue-600', light: 'bg-blue-100', text: 'text-blue-600', border: 'border-blue-600', hover: 'hover:bg-blue-50' },
-  green: { bg: 'bg-green-600', light: 'bg-green-100', text: 'text-green-600', border: 'border-green-600', hover: 'hover:bg-green-50' },
-  purple: { bg: 'bg-purple-600', light: 'bg-purple-100', text: 'text-purple-600', border: 'border-purple-600', hover: 'hover:bg-purple-50' },
-  orange: { bg: 'bg-orange-600', light: 'bg-orange-100', text: 'text-orange-600', border: 'border-orange-600', hover: 'hover:bg-orange-50' },
-  red: { bg: 'bg-red-600', light: 'bg-red-100', text: 'text-red-600', border: 'border-red-600', hover: 'hover:bg-red-50' },
-  cyan: { bg: 'bg-cyan-600', light: 'bg-cyan-100', text: 'text-cyan-600', border: 'border-cyan-600', hover: 'hover:bg-cyan-50' },
-  teal: { bg: 'bg-teal-600', light: 'bg-teal-100', text: 'text-teal-600', border: 'border-teal-600', hover: 'hover:bg-teal-50' },
-  amber: { bg: 'bg-amber-600', light: 'bg-amber-100', text: 'text-amber-600', border: 'border-amber-600', hover: 'hover:bg-amber-50' },
-  indigo: { bg: 'bg-indigo-600', light: 'bg-indigo-100', text: 'text-indigo-600', border: 'border-indigo-600', hover: 'hover:bg-indigo-50' },
-  pink: { bg: 'bg-pink-600', light: 'bg-pink-100', text: 'text-pink-600', border: 'border-pink-600', hover: 'hover:bg-pink-50' },
-  rose: { bg: 'bg-rose-600', light: 'bg-rose-100', text: 'text-rose-600', border: 'border-rose-600', hover: 'hover:bg-rose-50' }
+  blue: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary to-primary/80'
+  },
+  green: { 
+    bg: 'bg-accent', 
+    light: 'bg-accent/10', 
+    text: 'text-accent', 
+    border: 'border-accent', 
+    hover: 'hover:bg-accent/5',
+    gradient: 'bg-gradient-to-br from-accent to-accent/80'
+  },
+  purple: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary via-primary/90 to-accent/20'
+  },
+  orange: { 
+    bg: 'bg-accent', 
+    light: 'bg-muted/30', 
+    text: 'text-accent', 
+    border: 'border-muted', 
+    hover: 'hover:bg-muted/20',
+    gradient: 'bg-gradient-to-br from-muted to-accent/30'
+  },
+  red: { 
+    bg: 'bg-destructive', 
+    light: 'bg-destructive/10', 
+    text: 'text-destructive', 
+    border: 'border-destructive', 
+    hover: 'hover:bg-destructive/5',
+    gradient: 'bg-gradient-to-br from-destructive to-destructive/80'
+  },
+  cyan: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary/50', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary/70 to-primary'
+  },
+  teal: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary/60 to-primary'
+  },
+  amber: { 
+    bg: 'bg-muted', 
+    light: 'bg-muted/20', 
+    text: 'text-muted-foreground', 
+    border: 'border-muted', 
+    hover: 'hover:bg-muted/30',
+    gradient: 'bg-gradient-to-br from-muted/60 to-muted'
+  },
+  indigo: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary to-primary/70'
+  },
+  pink: { 
+    bg: 'bg-primary', 
+    light: 'bg-primary/10', 
+    text: 'text-primary', 
+    border: 'border-primary/60', 
+    hover: 'hover:bg-primary/5',
+    gradient: 'bg-gradient-to-br from-primary/80 to-primary'
+  },
+  rose: { 
+    bg: 'bg-accent', 
+    light: 'bg-accent/10', 
+    text: 'text-accent', 
+    border: 'border-accent/60', 
+    hover: 'hover:bg-accent/5',
+    gradient: 'bg-gradient-to-br from-accent to-accent/70'
+  }
 };
 
 const App = () => {
@@ -333,10 +410,10 @@ const App = () => {
   );
 
   const StatusBadge = ({ status }) => {
-    if (status === 'validated') return <span className="flex items-center gap-1 text-green-600"><CheckCircle2 size={16} /> Validada</span>;
-    if (status === 'partial') return <span className="flex items-center gap-1 text-yellow-600"><AlertTriangle size={16} /> Parcial</span>;
-    if (status === 'invalidated') return <span className="flex items-center gap-1 text-red-600"><XCircle size={16} /> Invalidada</span>;
-    return <span className="flex items-center gap-1 text-blue-600"><Clock size={16} /> En progreso</span>;
+    if (status === 'validated') return <span className="flex items-center gap-1 text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full"><CheckCircle2 size={16} /> Validada</span>;
+    if (status === 'partial') return <span className="flex items-center gap-1 text-muted-foreground font-semibold bg-muted/20 px-3 py-1 rounded-full"><AlertTriangle size={16} /> Parcial</span>;
+    if (status === 'invalidated') return <span className="flex items-center gap-1 text-destructive font-semibold bg-destructive/10 px-3 py-1 rounded-full"><XCircle size={16} /> Invalidada</span>;
+    return <span className="flex items-center gap-1 text-accent font-semibold bg-accent/10 px-3 py-1 rounded-full"><Clock size={16} /> En progreso</span>;
   };
 
   // Progress Dashboard View
@@ -347,50 +424,50 @@ const App = () => {
     , 0);
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
+      <div className="min-h-screen bg-gradient-to-br from-background to-secondary p-4 md:p-6">
         <div className="max-w-7xl mx-auto">
           <button 
             onClick={() => setView('overview')}
-            className="mb-6 flex items-center gap-2 text-slate-600 hover:text-slate-900"
+            className="mb-6 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
           >
             <ArrowLeft size={20} /> Volver al Overview
           </button>
           
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-              <Activity size={32} />
+          <div className="bg-card rounded-2xl shadow-xl p-6 md:p-8 mb-6 border border-border">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 flex items-center gap-3">
+              <Activity size={32} className="text-primary" />
               Dashboard de Progreso
             </h1>
-            <p className="text-slate-600 mb-6">Tracking completo de todas las actividades del framework optimizado</p>
+            <p className="text-muted-foreground mb-6">Tracking completo de todas las actividades del framework optimizado</p>
             
-            <div className="grid md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
-                <div className="text-blue-600 text-sm font-semibold mb-1">Progreso Total</div>
-                <div className="text-4xl font-bold text-slate-900">{getTotalProgress()}%</div>
-                <div className="text-xs text-slate-600 mt-1">{completedSteps} de {totalSteps} pasos</div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="text-primary text-sm font-semibold mb-1">Progreso Total</div>
+                <div className="text-4xl font-bold text-foreground">{getTotalProgress()}%</div>
+                <div className="text-xs text-muted-foreground mt-1">{completedSteps} de {totalSteps} pasos</div>
               </div>
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
-                <div className="text-green-600 text-sm font-semibold mb-1">Hipótesis</div>
-                <div className="text-4xl font-bold text-slate-900">8</div>
-                <div className="text-xs text-slate-600 mt-1">{Object.keys(hypothesisStatus).length} iniciadas</div>
+              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-6 border border-accent/20">
+                <div className="text-accent text-sm font-semibold mb-1">Hipótesis</div>
+                <div className="text-4xl font-bold text-foreground">8</div>
+                <div className="text-xs text-muted-foreground mt-1">{Object.keys(hypothesisStatus).length} iniciadas</div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6">
-                <div className="text-purple-600 text-sm font-semibold mb-1">Experimentos</div>
-                <div className="text-4xl font-bold text-slate-900">10</div>
-                <div className="text-xs text-slate-600 mt-1">total optimizados</div>
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20">
+                <div className="text-primary text-sm font-semibold mb-1">Experimentos</div>
+                <div className="text-4xl font-bold text-foreground">10</div>
+                <div className="text-xs text-muted-foreground mt-1">total optimizados</div>
               </div>
-              <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6">
-                <div className="text-orange-600 text-sm font-semibold mb-1">Duración</div>
-                <div className="text-4xl font-bold text-slate-900">8-10</div>
-                <div className="text-xs text-slate-600 mt-1">semanas</div>
+              <div className="bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl p-6 border border-muted/30">
+                <div className="text-muted-foreground text-sm font-semibold mb-1">Duración</div>
+                <div className="text-4xl font-bold text-foreground">8-10</div>
+                <div className="text-xs text-muted-foreground mt-1">semanas</div>
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-lg p-4">
-              <div className="text-sm font-semibold text-slate-600 mb-2">Progreso General</div>
-              <div className="w-full bg-slate-200 rounded-full h-4">
+            <div className="bg-secondary/50 rounded-xl p-4">
+              <div className="text-sm font-semibold text-muted-foreground mb-2">Progreso General</div>
+              <div className="w-full bg-secondary rounded-full h-4 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 h-4 rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-primary to-primary/80 h-4 rounded-full transition-all duration-500"
                   style={{ width: `${getTotalProgress()}%` }}
                 />
               </div>
@@ -520,9 +597,9 @@ const App = () => {
           </div>
 
           {/* Interactive Checklist */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <ClipboardList size={24} />
+          <div className="bg-card rounded-2xl shadow-lg p-6 md:p-8 mb-6 border border-border">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <ClipboardList size={24} className="text-primary" />
               Checklist de Tareas
             </h2>
             <div className="space-y-3">
@@ -532,33 +609,33 @@ const App = () => {
                   <div 
                     key={idx} 
                     onClick={() => toggleStep(exp.name, idx)}
-                    className={`flex gap-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                    className={`flex gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer ${
                       isCompleted 
-                        ? `${colors.light} ${colors.border}` 
-                        : 'bg-white border-slate-200 hover:border-slate-300'
+                        ? `${colors.light} ${colors.border} shadow-sm` 
+                        : 'bg-card border-border hover:border-primary/30 hover:shadow-md'
                     }`}
                   >
                     <div className="flex-shrink-0 pt-0.5">
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                      <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all ${
                         isCompleted 
                           ? `${colors.bg} ${colors.border}` 
-                          : 'border-slate-300 bg-white'
+                          : 'border-muted bg-card'
                       }`}>
                         {isCompleted && <CheckCircle2 className="text-white" size={16} />}
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
-                        <div className={`font-medium ${isCompleted ? 'text-slate-600 line-through' : 'text-slate-900'}`}>
+                        <div className={`font-semibold ${isCompleted ? 'text-muted-foreground line-through' : 'text-foreground'}`}>
                           Paso {idx + 1}
                         </div>
-                        <div className={`text-xs px-2 py-1 rounded ${
-                          isCompleted ? `${colors.light} ${colors.text}` : 'bg-slate-100 text-slate-600'
+                        <div className={`text-xs px-3 py-1 rounded-full font-medium ${
+                          isCompleted ? `${colors.light} ${colors.text}` : 'bg-secondary text-muted-foreground'
                         }`}>
                           {isCompleted ? 'Completado' : 'Pendiente'}
                         </div>
                       </div>
-                      <p className={`text-sm mt-1 ${isCompleted ? 'text-slate-500' : 'text-slate-700'}`}>
+                      <p className={`text-sm mt-1 ${isCompleted ? 'text-muted-foreground' : 'text-muted-foreground'}`}>
                         {step}
                       </p>
                     </div>
@@ -570,27 +647,27 @@ const App = () => {
 
           {/* Tools & Deliverable */}
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <FileText size={20} />
+            <div className="bg-card rounded-2xl shadow-lg p-6 border border-border">
+              <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                <FileText size={20} className="text-primary" />
                 Herramientas Necesarias
               </h3>
               <ul className="space-y-2">
                 {exp.tools.map((tool, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-slate-700">
-                    <CheckCircle className="text-green-600 mt-0.5 flex-shrink-0" size={18} />
+                  <li key={idx} className="flex items-start gap-2 text-foreground">
+                    <CheckCircle className="text-primary mt-0.5 flex-shrink-0" size={18} />
                     <span>{tool}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-2 border-green-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Target size={20} />
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl shadow-lg p-6 border-2 border-primary/30">
+              <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                <Target size={20} className="text-primary" />
                 Entregable Final
               </h3>
-              <p className="text-slate-900 text-lg font-medium">{exp.deliverable}</p>
+              <p className="text-foreground text-base md:text-lg font-medium">{exp.deliverable}</p>
             </div>
           </div>
         </div>
@@ -956,75 +1033,84 @@ const App = () => {
 
   // Overview
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background p-4 md:p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">Framework de Validación BeyondCX</h1>
-          <p className="text-slate-600 text-lg mb-4">8-10 semanas (optimizado) | Budget: €3.9K</p>
-          <p className="text-slate-700 mb-6">Validar 8 hipótesis críticas de GTM antes de escalar, usando metodología científica con experimentos lean, métricas y decision points claros.</p>
-          
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6">
-            <h3 className="text-xl font-bold mb-3">🎯 Principios del Framework</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="font-semibold mb-1">1. APRENDIZAJE {'>'}  EJECUCIÓN</div>
-                <div className="opacity-90">Ejecutas experimentos científicos, no marketing</div>
-              </div>
-              <div>
-                <div className="font-semibold mb-1">2. FAIL FAST, LEARN FASTER</div>
-                <div className="opacity-90">Hipótesis falla → PIVOT inmediato</div>
-              </div>
-              <div>
-                <div className="font-semibold mb-1">3. DATOS {'>'} OPINIONES</div>
-                <div className="opacity-90">Decisiones con números, no gut feeling</div>
+        {/* Hero Header */}
+        <div className="bg-gradient-to-br from-accent via-accent/90 to-accent/80 text-white rounded-2xl shadow-2xl p-8 md:p-10 mb-6 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="relative z-10">
+            <h1 className="text-3xl md:text-5xl font-bold mb-3">Framework de Validación BeyondCX</h1>
+            <p className="text-white/90 text-lg md:text-xl mb-4 font-medium">8-10 semanas (optimizado) | Budget: €3.9K</p>
+            <p className="text-white/80 mb-6 max-w-3xl">Validar 8 hipótesis críticas de GTM antes de escalar, usando metodología científica con experimentos lean, métricas y decision points claros.</p>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <span>🎯</span> Principios del Framework
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <div className="font-semibold mb-1 text-white">1. APRENDIZAJE {'>'}  EJECUCIÓN</div>
+                  <div className="text-white/80">Ejecutas experimentos científicos, no marketing</div>
+                </div>
+                <div>
+                  <div className="font-semibold mb-1 text-white">2. FAIL FAST, LEARN FASTER</div>
+                  <div className="text-white/80">Hipótesis falla → PIVOT inmediato</div>
+                </div>
+                <div>
+                  <div className="font-semibold mb-1 text-white">3. DATOS {'>'} OPINIONES</div>
+                  <div className="text-white/80">Decisiones con números, no gut feeling</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-4 mb-6">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-3 mb-6">
           <button
             onClick={() => setView('progress')}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors shadow-lg"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-white rounded-xl hover:shadow-lg transition-all font-semibold"
           >
             <Activity size={20} />
             Dashboard de Progreso
           </button>
           <button
             onClick={() => setView('timeline')}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-all font-semibold"
           >
             <Calendar size={20} />
             Ver Timeline
           </button>
           <button
             onClick={() => setView('budget')}
-            className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 bg-card border-2 border-accent text-accent rounded-xl hover:bg-accent hover:text-white transition-all font-semibold"
           >
             <BarChart3 size={20} />
             Ver Presupuesto
           </button>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-lg p-6 shadow">
-            <div className="text-slate-600 text-sm mb-1">Hipótesis Totales</div>
-            <div className="text-3xl font-bold text-slate-900">8</div>
+        {/* Stats Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-card rounded-xl p-6 shadow-lg border border-border">
+            <div className="text-muted-foreground text-sm mb-1 font-medium">Hipótesis Totales</div>
+            <div className="text-4xl font-bold text-foreground">8</div>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow">
-            <div className="text-slate-600 text-sm mb-1">Experimentos</div>
-            <div className="text-3xl font-bold text-slate-900">10</div>
+          <div className="bg-card rounded-xl p-6 shadow-lg border border-border">
+            <div className="text-muted-foreground text-sm mb-1 font-medium">Experimentos</div>
+            <div className="text-4xl font-bold text-foreground">10</div>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow">
-            <div className="text-slate-600 text-sm mb-1">Budget Total</div>
-            <div className="text-3xl font-bold text-slate-900">€3.9K</div>
+          <div className="bg-card rounded-xl p-6 shadow-lg border border-border">
+            <div className="text-muted-foreground text-sm mb-1 font-medium">Budget Total</div>
+            <div className="text-4xl font-bold text-primary">€3.9K</div>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow">
-            <div className="text-slate-600 text-sm mb-1">Progreso Global</div>
-            <div className="text-3xl font-bold text-slate-900">{getTotalProgress()}%</div>
+          <div className="bg-card rounded-xl p-6 shadow-lg border border-border">
+            <div className="text-muted-foreground text-sm mb-1 font-medium">Progreso Global</div>
+            <div className="text-4xl font-bold text-foreground">{getTotalProgress()}%</div>
           </div>
         </div>
 
+        {/* Hypotheses Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hypotheses.map(h => {
             const colors = colorClasses[h.color];
@@ -1036,49 +1122,49 @@ const App = () => {
               <div
                 key={h.id}
                 onClick={() => setSelectedHypothesis(h)}
-                className={`bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-2 ${colors.border} hover:scale-105`}
+                className={`bg-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer border-2 ${colors.border} hover:scale-[1.02] group`}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`${colors.bg} text-white p-3 rounded-lg`}>
+                  <div className={`${colors.bg} text-white p-3 rounded-xl shadow-md`}>
                     <h.icon size={24} />
                   </div>
                   <StatusBadge status={status} />
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{h.id}: {h.title}</h3>
-                <p className="text-sm text-slate-600 mb-4 italic line-clamp-2">"{h.hypothesis}"</p>
+                <h3 className="text-xl font-bold text-foreground mb-2">{h.id}: {h.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 italic line-clamp-2">"{h.hypothesis}"</p>
                 
                 <div className="mb-3">
-                  <div className="flex justify-between text-xs text-slate-600 mb-1">
-                    <span>Progreso</span>
-                    <span className="font-semibold">{progress}%</span>
+                  <div className="flex justify-between text-xs text-muted-foreground mb-1">
+                    <span className="font-medium">Progreso</span>
+                    <span className="font-bold text-foreground">{progress}%</span>
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2">
+                  <div className="w-full bg-secondary rounded-full h-2.5 overflow-hidden">
                     <div 
-                      className={`${colors.bg} h-2 rounded-full transition-all`}
+                      className={`${colors.bg} h-2.5 rounded-full transition-all duration-300`}
                       style={{ width: `${progress}%` }}
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2 text-sm mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Confianza:</span>
-                    <span className="font-semibold">{h.confidence}%</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Confianza:</span>
+                    <span className="font-bold text-foreground">{h.confidence}%</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Decision:</span>
-                    <span className="font-semibold">Semana {h.decisionWeek}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Decision:</span>
+                    <span className="font-bold text-primary">Semana {h.decisionWeek}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Budget:</span>
-                    <span className="font-semibold">€{totalBudget}</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Budget:</span>
+                    <span className="font-bold text-accent">€{totalBudget}</span>
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between text-sm pt-3 border-t border-slate-200">
-                  <span className="text-slate-600">{h.experiments.length} experimentos</span>
-                  <ChevronRight className={colors.text} size={20} />
+                <div className="flex items-center justify-between text-sm pt-3 border-t border-border group-hover:border-primary/30 transition-colors">
+                  <span className="text-muted-foreground font-medium">{h.experiments.length} experimentos</span>
+                  <ChevronRight className={`${colors.text} group-hover:translate-x-1 transition-transform`} size={20} />
                 </div>
               </div>
             );

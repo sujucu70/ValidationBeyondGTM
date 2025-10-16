@@ -7,50 +7,56 @@ All colors MUST be HSL.
 */
 
 @layer base {
-:root {
-    --background: 240 20% 99%;
-    --foreground: 240 10% 4%;
+  :root {
+    /* BeyondCX Corporate Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 221 83% 53%;
+    /* Primary: Accent 3 - Blue #6D84E3 */
+    --primary: 230 68% 66%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    /* Secondary: Accent 1 - Light Gray #E4E3E3 */
+    --secondary: 0 2% 89%;
+    --secondary-foreground: 0 0% 25%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    /* Muted: Accent 2 - Mid Gray #B1B1B0 */
+    --muted: 30 1% 69%;
+    --muted-foreground: 0 0% 25%;
 
-    --accent: 142 76% 36%;
+    /* Accent: Accent 4 - Dark Gray #3F3F3F */
+    --accent: 0 0% 25%;
     --accent-foreground: 0 0% 100%;
 
+    /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 221 83% 53%;
+    --border: 0 2% 89%;
+    --input: 0 2% 89%;
+    --ring: 230 68% 66%;
     
-    /* Professional gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(250 83% 60%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 46%) 100%);
-    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(45 93% 47%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(240 20% 99%) 0%, hsl(240 10% 96%) 100%);
+    /* BeyondCX Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(230 68% 66%) 0%, hsl(240 68% 60%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 25%) 0%, hsl(0 0% 0%) 100%);
+    --gradient-light: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 2% 95%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(230 68% 66%) 0%, hsl(0 0% 25%) 100%);
     
-    /* Business shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(240 10% 4% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(240 10% 4% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(240 10% 4% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(240 10% 4% / 0.1);
+    /* Refined shadows */
+    --shadow-sm: 0 2px 4px 0 hsl(0 0% 0% / 0.06);
+    --shadow-md: 0 4px 12px 0 hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 8px 24px 0 hsl(0 0% 0% / 0.12);
+    --shadow-xl: 0 16px 48px 0 hsl(0 0% 0% / 0.16);
     
-    /* Smooth transitions */
+    /* Smooth professional transitions */
     --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -71,39 +77,40 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-.dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
+  .dark {
+    /* BeyondCX Dark Mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 89%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 89%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 89%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 230 68% 66%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 25%;
+    --secondary-foreground: 0 0% 89%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 30 1% 69%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 230 68% 66%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 221 83% 53%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 230 68% 66%;
     
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(250 83% 60%) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 46%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(240 10% 8%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(230 68% 66%) 0%, hsl(240 68% 60%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 0%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(230 68% 66%) 0%, hsl(0 0% 6%) 100%);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -121,6 +128,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-outfit antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit;
   }
 }
